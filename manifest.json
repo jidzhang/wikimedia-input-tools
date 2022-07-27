@@ -1,14 +1,31 @@
 {
   "name": "Wikimedia Input Tools",
   "description": "jQuery.IME based input method editor supporting more than 220 input methods across more than 120 languages.",
-  "version": "0.1.0",
+  "version": "0.2",
   "author": "Sai Karthik",
   "homepage_url": "https://gitlab.com/kskarthik/wikimedia-input-tools",
   "manifest_version": 2,
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "48": "icons/logo.png",
+    "64": "icons/logo.png",
+    "128": "icons/logo.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{dbd3dbd9-b292-48d8-8640-c7e9715abc97}"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
+      ],
+      "all_frames": true,
+      "css": [
+        "jquery.ime/css/jquery.ime.css"
       ],
       "js": [
         "src/jquery-3.6.0.js",
@@ -246,9 +263,6 @@
         "jquery.ime/rules/ky/ky-cyrl-alt.js",
         "jquery.ime/rules/bwr/bwr-tilde.js",
         "jquery.ime/rules/bgn/bgn-kbd.js"
-      ],
-      "css": [
-        "jquery.ime/css/jquery.ime.css"
       ]
     }
   ]

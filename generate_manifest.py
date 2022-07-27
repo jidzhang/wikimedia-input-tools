@@ -3,12 +3,12 @@ import json, os
 manifest = {
     "name": "Wikimedia Input Tools",
     "description": "jQuery.IME based input method editor supporting more than 220 input methods across more than 120 languages.",
-    "version": "0.1.0",
+    "version": "0.2",
     "author": "Sai Karthik",
     "homepage_url": "https://gitlab.com/kskarthik/wikimedia-input-tools",
     "manifest_version": 2,
-    # "icons": {"31": "icons/32.png", "64": "icons/64.png"},
-    # "permissions": ["storage"],
+    "permissions": ["storage"],
+    "icons": {"48": "icons/logo.png", "64": "icons/logo.png", "128": "icons/logo.png"},
     # "browser_action": {
     #     "default_icon": "icons/32.png",
     #     "default_title": "Indic Input",
@@ -18,14 +18,20 @@ manifest = {
     # "commands": {
     #     "switch-layout": {
     #         "suggested_key": {"default": "Ctrl+Space", "linux": "Ctrl+Space"},
-    #         "description": "Keyboard layout switch",
+    #         "description": "Switch Keyboard Layout",
     #     }
     # },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{dbd3dbd9-b292-48d8-8640-c7e9715abc97}",
+        }
+    },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
+            "all_frames": True,
+            "css": ["jquery.ime/css/jquery.ime.css"],
             "js": [
-                # "src/jquery-1.10.2.js",
                 "src/jquery-3.6.0.js",
                 "jquery.ime/src/jquery.ime.js",
                 "jquery.ime/src/jquery.ime.inputmethods.js",
@@ -34,7 +40,6 @@ manifest = {
                 "jquery.ime/src/jquery.ime.selector.js",
                 "src/init.js",
             ],
-            "css": ["jquery.ime/css/jquery.ime.css"],
         }
     ],
 }
