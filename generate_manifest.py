@@ -3,7 +3,7 @@ import json, os
 manifest = {
     "name": "Wikimedia Input Tools",
     "description": "jQuery.IME based input method editor supporting more than 220 input methods across more than 120 languages.",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "author": "Sai Karthik",
     "homepage_url": "https://gitlab.com/kskarthik/wikimedia-input-tools",
     "manifest_version": 2,
