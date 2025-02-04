@@ -3,7 +3,7 @@ import json, os
 manifest = {
     "name": "Wikimedia Input Tools",
     "description": "jQuery.IME based input method editor supporting more than 220 input methods across more than 120 languages.",
-    "version": "0.2.5",
+    "version": "0.2.7",
     "author": "Sai Karthik",
     "homepage_url": "https://gitlab.com/kskarthik/wikimedia-input-tools",
     "manifest_version": 2,
@@ -32,7 +32,7 @@ manifest = {
             "all_frames": True,
             "css": ["jquery.ime/css/jquery.ime.css"],
             "js": [
-                "src/jquery-3.6.0.js",
+                "src/jquery-3.7.1.min.js",
                 "jquery.ime/src/jquery.ime.js",
                 "jquery.ime/src/jquery.ime.inputmethods.js",
                 "jquery.ime/src/jquery.ime.preferences.js",
