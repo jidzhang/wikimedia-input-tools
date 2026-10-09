@@ -1,0 +1,66 @@
+#wit-popup.wit-popup {
+  position: absolute;
+  z-index: 2147483647;
+  min-width: 120px;
+  max-width: 320px;
+  padding: 4px;
+  margin: 0;
+  background-color: #ffffff;
+  color: #202124;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+#wit-popup.wit-popup .wit-popup-list {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+#wit-popup.wit-popup .wit-popup-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  padding: 4px 10px 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+#wit-popup.wit-popup .wit-popup-item .wit-popup-label {
+  flex: 0 0 auto;
+  min-width: 16px;
+  color: #5f6368;
+  font-size: 12px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#wit-popup.wit-popup .wit-popup-item .wit-popup-text {
+  flex: 1 1 auto;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+#wit-popup.wit-popup .wit-popup-item.wit-cand-active {
+  background-color: #e8f0fe;
+}
+
+#wit-popup.wit-popup .wit-popup-item.wit-cand-active .wit-popup-label {
+  color: #1a73e8;
+  font-weight: 700;
+}

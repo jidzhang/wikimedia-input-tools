@@ -8,7 +8,7 @@ manifest = {
     "homepage_url": "https://gitlab.com/kskarthik/wikimedia-input-tools",
     "manifest_version": 2,
     "permissions": ["storage"],
-    "icons": {"48": "icons/logo.png", "64": "icons/logo.png", "128": "icons/logo.png"},
+    "icons": {"128": "icons/logo.png"},
     # "browser_action": {
     #     "default_icon": "icons/32.png",
     #     "default_title": "Indic Input",
@@ -30,29 +30,39 @@ manifest = {
         {
             "matches": ["<all_urls>"],
             "all_frames": True,
-            "css": ["jquery.ime/css/jquery.ime.css"],
+            "css": ["jquery.ime/css/jquery.ime.css", "src/pinyin-popup.css"],
             "js": [
                 "src/jquery-3.7.1.min.js",
                 "jquery.ime/src/jquery.ime.js",
                 "jquery.ime/src/jquery.ime.inputmethods.js",
                 "jquery.ime/src/jquery.ime.preferences.js",
                 "jquery.ime/src/jquery.ime.selector.js",
-                "jquery.ime/src/jquery.ime.selector.js",
+                "src/pinyin-data/00-namespace.js",
+                "src/pinyin-data/10-chars.js",
+                "src/pinyin-data/20-words2a.js",
+                "src/pinyin-data/21-words2b.js",
+                "src/pinyin-data/30-words3.js",
+                "src/pinyin-data/40-words4.js",
+                "src/pinyin-data/50-words56.js",
+                "src/pinyin-segment.js",
+                "src/pinyin-popup.js",
+                "src/zh-latn-pinyin.js",
                 "src/init.js",
             ],
         }
     ],
 }
 
-# auto generate content_script array
-dir_list = os.listdir("jquery.ime/rules")
-dir_list.remove("README.md")
+# collect rule files, then append in strict path order for deterministic output
+rule_files = []
+dir_list = sorted(os.listdir("jquery.ime/rules"))
+if "README.md" in dir_list:
+    dir_list.remove("README.md")
 for dir in dir_list:
-    for file in os.listdir(f"jquery.ime/rules/{dir}"):
+    for file in sorted(os.listdir(f"jquery.ime/rules/{dir}")):
         if file.endswith(".js"):
-            manifest["content_scripts"][0]["js"].append(
-                f"jquery.ime/rules/{dir}/{file}"
-            )
+            rule_files.append(f"jquery.ime/rules/{dir}/{file}")
+manifest["content_scripts"][0]["js"].extend(sorted(rule_files))
 
 with open("manifest.json", "w") as f:
-    f.write(json.dumps(manifest, indent=2))
+    f.write(json.dumps(manifest, indent=2) + "\n")
